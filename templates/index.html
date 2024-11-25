@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator & Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>QR Code Generator & Scanner</h1>
+            
+            {% if not generated and not decrypted %}
+                <!-- Form to generate QR code -->
+                <form method="POST">
+                    <label for="data">Enter Data (URL or Text):</label>
+                    <input type="text" id="data" name="data" placeholder="Enter your data..." required>
+
+                    <label for="key">Encryption Key:</label>
+                    <input type="password" id="key" name="key" placeholder="Enter a secure key..." required>
+
+                    <button type="submit" name="generate">Generate QR Code</button>
+                </form>
+            {% endif %}
+
+            {% if generated %}
+                <h2>Generated QR Code:</h2>
+                <img src="{{ qr_code }}" alt="Generated QR Code">
+                <form method="POST">
+                    <input type="hidden" name="encrypted_data" value="{{ encrypted_data }}">
+                    <label for="key">Decryption Key:</label>
+                    <input type="password" id="key" name="key" placeholder="Enter the decryption key..." required>
+                    <button type="submit" name="decrypt">Decrypt</button>
+                </form>
+            {% endif %}
+
+            {% if decrypted %}
+                <h2>Decrypted Data:</h2>
+                <p>{{ decrypted_data }}</p>
+                {% if decrypted_data.startswith("http") %}
+                    <a href="{{ decrypted_data }}" target="_blank" class="btn">Visit Website</a>
+                {% endif %}
+            {% endif %}
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

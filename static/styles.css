@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url("{{ url_for('static', filename='bg.jpg') }}") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.content {
+    background: rgba(0, 0, 0, 0.9); /* Darker background */
+    padding: 30px;
+    border-radius: 15px; /* Smooth rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Improved shadow effect */
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid #444; /* Slight border for better contrast */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+    color: #ddd;
+}
+
+input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px; /* Smooth input borders */
+    border: 1px solid #666;
+    font-size: 1em;
+    background: #222; /* Dark background for inputs */
+    color: #ddd;
+}
+
+input:focus {
+    border: 1px solid #007bff;
+    outline: none;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+img {
+    margin: 20px 0;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Slight rounding for the QR image */
+}
+
+.error {
+    color: #ff6b6b;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #218838;
+}
